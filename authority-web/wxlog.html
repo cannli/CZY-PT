@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>成长云</title>
+</head>
+<body>
+</body>
+<script src="./js/jquery.js"></script>
+<Script language="javascript" type="text/javascript">
+    wxFn()
+    function wxFn() {
+        $.ajax({
+            type: 'GET',
+            url: "http://health.junlz.com/bghealth/api/weChat/wxLogin.do",
+            data: {},
+            success: function (result) {
+                if (result.code == 200) {
+                    window.location.href = result.data
+                } else {
+                    alert(result.msg)
+                }
+            }
+        })
+    }
+</Script>
+</html>

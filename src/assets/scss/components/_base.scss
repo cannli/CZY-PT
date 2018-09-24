@@ -1,0 +1,182 @@
+html {
+  font-family: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+}
+
+html,
+body {
+  background-color: #F2F2F2;
+}
+
+.backg-bor-style {
+  background: #fff;
+  box-shadow: 4px 4px 40px rgba(0, 0, 0, .05);
+  border-color: rgba(0, 0, 0, .05);
+}
+
+.backg-bor-style1 {
+  background: #f5f5f5;
+  box-shadow: 4px 4px 40px rgba(0, 0, 0, .05);
+  border-color: rgba(0, 0, 0, .05);
+}
+
+.fl {
+  float: left;
+}
+
+// .fr {
+//   float: right;
+// }
+.align_center {
+  text-align: center;
+}
+
+.align_left {
+  text-align: left;
+}
+
+.align_right {
+  text-align: right;
+}
+
+.ofh {
+  overflow: hidden;
+}
+
+.hide {
+  display: none;
+}
+
+.block {
+  display: block;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.m_auto {
+  margin: auto;
+}
+
+.width_100 {
+  width: 100%;
+}
+
+.height_100 {
+  height: 100%;
+}
+
+.nowrap {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.d_box {
+  display: flex;
+  box-sizing: border-box;
+  flex: 1;
+  width: 100%;
+}
+
+.d_boxflex {
+  flex: 1;
+  display: block;
+}
+.mar-bot20 {
+  margin-bottom: 20px;
+}
+
+.mar-top20 {
+  margin-top: 20px;
+}
+
+.padding-c {
+  padding: 15px 0 15px 10px;
+}
+
+// element
+.el-input__inner {
+  border-radius: 0;
+}
+
+button,
+.el-button {
+  border-radius: 0;
+}
+
+.card .el-input__inner {
+  border-radius: 0;
+  border: 0;
+}
+
+.el-card__body {
+  padding: 5px;
+}
+
+.el-radio-button {
+  border-radius: 0;
+}
+.el-radio-button:first-child .el-radio-button__inner{
+  border-radius: 0;
+}
+.el-radio-button:last-child .el-radio-button__inner {
+  border-radius: 0;
+}
+
+// eng
+.backg-bor-style {
+  background: #fff;
+  box-shadow: 4px 4px 40px rgba(0, 0, 0, .05);
+  border-color: rgba(0, 0, 0, .05);
+  padding: 10px 0 0 0;
+}
+
+.h3 {
+  padding: 10px 0;
+}
+
+
+// form
+/*row col 里面的val的属性*/
+.lucencyInput {
+  font-size: 14px;
+  color: #3e4047;
+  height: 36px;
+  line-height: 36px;
+}
+.card-panel-col20 {
+  margin-bottom: .5%;
+  margin-top: .5%;
+}
+.a-col-title {
+  color: #80848f;
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+.ext-poptip-btn:after {
+  content: '?';
+  position: absolute;
+  top: 15px;
+  font-weight: bold;
+  width: 16px;
+  height: 16px;
+  line-height: 16px;
+  border-radius: 50%;
+  color: #fff;
+  background-color: #0000ff;
+  text-align: center;
+  font-size: 10px;
+}
+
+.pagination-sty{
+  text-align: center;
+  margin-top: 31px;
+}
+.el-table--medium td, .el-table--medium th {
+  padding: 15px 0;
+}
