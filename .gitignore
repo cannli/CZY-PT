@@ -30,4 +30,8 @@ pom.xml.versionsBackup
 # node ignore
 node_modules/
 dist/
+<<<<<<< HEAD
 authority-web/
+=======
+authority-web/
+>>>>>>> 7e0abcee17983a09f7b41bee538b903238a96112
