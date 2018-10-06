@@ -50,12 +50,14 @@
               <el-button @click="_modifyStatusExam(scope.row,-1)" v-if="scope.row.status==1" type="text" size="mini">
                 拒绝
               </el-button>
-              <el-button type="text" size="mini" @click="_examStudentDetail(scope.row.code)" v-if="scope.row.status==2">
+              <el-button type="text" size="mini" @click="_examStudentDetail(scope.row.code, scope.row.schoolId)"
+                         v-if="scope.row.status==2">
                 查看学生
               </el-button>
               <el-button type="text" size="mini" @click="_getReport(scope.row.code)" v-if="scope.row.status==2">获取体检报告
               </el-button>
-              <el-button @click="examProjectDetial(scope.row.code,scope.row.schoolId)" v-if="scope.row.status==4||scope.row.status==3"
+              <el-button @click="examProjectDetial(scope.row.code,scope.row.schoolId)"
+                         v-if="scope.row.status==4||scope.row.status==3"
                          type="text" size="mini">查看详情
               </el-button>
             </template>
@@ -81,7 +83,7 @@
       <produce :page="page" :projectCode="projectCode" :schoolId="schoolId" @closeFn="closeFn"></produce>
     </div>
     <div v-if="active===3"> <!--查看学生-->
-      <students :projectCode="projectCode" @closeFn="closeFn"></students>
+      <students :projectCode="projectCode" :schoolId="schoolId" @closeFn="closeFn"></students>
     </div>
   </div>
 
@@ -107,7 +109,7 @@
         examProjectTableData: [],
         // 分页
         examProjectCurrentPage: 1,
-      //  examStudentCurrentPage: 1,
+        //  examStudentCurrentPage: 1,
         studnetTotal: 0,
         examProjectTotal: 0,
         examProjectPageSize: 10,
@@ -181,13 +183,14 @@
         this._getExamProjectList()
         console.log(`每页 ${val} 条`)
       },
-      _examStudentDetail(code) {
+      _examStudentDetail(code, schoolId) {
+        this.schoolId = schoolId;
         this.projectCode = code;
         this.active = 3;
       },
-      examProjectDetial(code,schoolId) {
+      examProjectDetial(code, schoolId) {
         this.projectCode = code;
-        this.schoolId=schoolId;
+        this.schoolId = schoolId;
         this.active = 2;
         this.page = 1;
       },

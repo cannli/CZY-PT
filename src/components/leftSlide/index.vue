@@ -77,7 +77,7 @@
           {
             label: "用户",
             path: "/memberManagement",
-            icon: "el-icon-service",
+            icon: "el-icon-view",
             children: [
               {
                 label: "学校管理",

@@ -9,7 +9,25 @@
           <el-radio-button label="待体检"></el-radio-button>
           <el-radio-button label="已体检"></el-radio-button>
         </el-radio-group>
+        <el-row class="mar-bot20" style="margin-top: 20px;">
+          <el-col :lg="24">
+            <div class="col_sty">
+              <el-cascader v-model="gradeVal" style="width:210px;" clearable
+                           :options="gradeArr"
+                           :props="cityProps"
+                           @change=""
+                           change-on-select
+              >
+              </el-cascader>
 
+              <el-input v-model="search" placeholder="学生编号/学生姓名/体检编号" size="medium" clearable
+                        style="width: 210px;"></el-input>
+              <el-button @click="_getExamStudent" type="primary" size="medium">查询</el-button>
+
+              <!-- <el-button type="primary" size="medium" style="float: right;">打印导出</el-button>-->
+            </div>
+          </el-col>
+        </el-row>
         <student-exam :tableData="tableData" :projectCode="projectCode"
                       @_getExamStudent="_getExamStudent"></student-exam>
         <bottom-tool-bar>
@@ -39,6 +57,11 @@
     },
     data() {
       return {
+        cityProps: {
+          value: 'id',
+          children: 'children'
+        },
+
         radioVal: '待体检',
         status: 1,
         tableData: [],
@@ -46,19 +69,39 @@
         examProjectTotal: 0,
         examProjectCurrentPage: 1,
         examProjectPageSize: 10,
+
+        search: '',
+        gradeVal: [],
+        gradeArr: []
       }
     },
-    props: ["projectCode"],
+    props: {
+      projectCode: [String, Number],
+      schoolId: [String, Number]
+    },
     mounted() {
       this.$nextTick(() => {
         this._getExamStudent()
+        this._getGradeClassList()
       })
     },
     methods: {
       closeFn() {
         this.$emit('closeFn')
       },
-
+      // 获取年级班级
+      _getGradeClassList() {
+        let params = {
+          schoolId: this.schoolId
+        };
+        this.$fetch.dataApi
+          .getGradeClassList(params)
+          .then(({data}) => {
+            if (data && data.length > 0) {
+              this.gradeArr = data
+            }
+          })
+      },
       change() {
         if (this.status === 1) {
           this.status = 2
@@ -68,12 +111,16 @@
         this._getExamStudent()
       },
       _getExamStudent() {
+        // gradeId 年级  classId班级
+        let [gradeId, classId] = this.gradeVal
         let params = {
           pageNum: this.examProjectCurrentPage,
           pageSize: this.examProjectPageSize,
           projectCode: this.projectCode,
           status: this.status,
-          search: this.input
+          search: this.search,
+          gradeId,
+          classId,
         }
         this.$fetch.dataApi.getExamStudent(params).then(({data, msg, total}) => {
           this.tableData = data

@@ -452,3 +452,13 @@ export function getOverview(params){
     params
   })
 }
+
+
+/*获取年级班级*/
+export function getGradeClassList(params){
+  return fetch({
+    url:  window.projectRootUrl + '/admin/getGradeClassList.do',
+    method: 'get',
+    params
+  })
+}
