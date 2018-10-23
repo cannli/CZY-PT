@@ -135,7 +135,7 @@
       <el-col :span="12" class="boxAll">
         <div class="box1">
           <div class="box box-c">
-            <span class="span1 title">A区</span><span class="span2">{{stbObjA.schoolNum}}人</span>
+            <span class="span1 title">A区</span><span class="span2">{{stbObjA.schoolNum || 0}}人</span>
           </div>
           <div class="box">
             <span class="span1">
@@ -152,7 +152,7 @@
                   <span class="ext-poptip-btn1">BMI：</span>
                 </span>
           </el-popover>
-            </span><span class="span2">{{stbObjA.bim}}</span>
+            </span><span class="span2">{{stbObjA.bim  || 0}}</span>
             <!-- <span class="span2">严重偏低</span>-->
           </div>
           <div class="box">
@@ -168,7 +168,7 @@
                 <span slot="reference">
                   <span class="ext-poptip-btn2">体重：</span>
                 </span>
-          </el-popover></span><span class="span2">{{stbObjA.tz}}KG</span>
+          </el-popover></span><span class="span2">{{stbObjA.tz  || 0}}KG</span>
             <!--<span class="span2">&#45;&#45;&lt;!&ndash;标准&ndash;&gt;</span>-->
           </div>
           <div class="box">
@@ -184,7 +184,7 @@
                 <span slot="reference">
                   <span class="ext-poptip-btn3">身高：</span>
                 </span>
-          </el-popover></span><span class="span2">{{stbObjA.sg}}CM</span>
+          </el-popover></span><span class="span2">{{stbObjA.sg  || 0}}CM</span>
             <!--<span class="span2">&lt;!&ndash;偏低&ndash;&gt;&#45;&#45;</span>-->
           </div>
           <div class="tip_pro">
@@ -204,7 +204,7 @@
       <el-col :span="12" class="box">
         <div class="box2 ">
           <div class="box box-c">
-            <span class="span1">B区</span><span class="span2">{{stbObjB.schoolNum}}人</span>
+            <span class="span1">B区</span><span class="span2">{{stbObjB.schoolNum || 0}}人</span>
           </div>
           <div class="box">
             <span class="span1">
@@ -221,7 +221,7 @@
                   <span class="ext-poptip-btn1">BMI：</span>
                 </span>
           </el-popover>
-            </span><span class="span2">{{stbObjB.bim}}</span>
+            </span><span class="span2">{{stbObjB.bim || 0}}</span>
             <!-- <span class="span2">&#45;&#45;&lt;!&ndash;严重偏低&ndash;&gt;</span>-->
           </div>
           <div class="box">
@@ -237,7 +237,7 @@
                 <span slot="reference">
                   <span class="ext-poptip-btn2">体重：</span>
                 </span>
-          </el-popover></span><span class="span2">{{stbObjB.tz}}KG</span>
+          </el-popover></span><span class="span2">{{stbObjB.tz || 0}}KG</span>
           </div>
           <div class="box">
             <span class="span1"> <el-popover placement="top" width="200" trigger="hover">
@@ -252,7 +252,7 @@
                 <span slot="reference">
                   <span class="ext-poptip-btn3">身高：</span>
                 </span>
-          </el-popover></span><span class="span2">{{stbObjB.sg}}CM</span>
+          </el-popover></span><span class="span2">{{stbObjB.sg || 0}}CM</span>
             <!--<span class="span2">&#45;&#45;&lt;!&ndash;偏低&ndash;&gt;</span>-->
           </div>
           <div class="tip_pro">
