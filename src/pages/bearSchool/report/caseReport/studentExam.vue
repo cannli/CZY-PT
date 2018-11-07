@@ -117,6 +117,7 @@
             message: '操作成功',
             type: 'success'
           });
+          this.$emit('_getExamStudent');
         }).catch(() => {
 
         })
