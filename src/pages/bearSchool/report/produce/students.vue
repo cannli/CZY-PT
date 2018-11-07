@@ -110,9 +110,10 @@
         }
         this._getExamStudent()
       },
-      _getExamStudent() {
+      _getExamStudent(examProjectCurrentPage = 1) {
         // gradeId 年级  classId班级
         let [gradeId, classId] = this.gradeVal
+        this.examProjectCurrentPage = this.examProjectCurrentPage
         let params = {
           pageNum: this.examProjectCurrentPage,
           pageSize: this.examProjectPageSize,

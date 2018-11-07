@@ -462,3 +462,13 @@ export function getGradeClassList(params){
     params
   })
 }
+
+
+// 同步学生个人数据
+export function syncExam(params){
+  return fetch({
+    url:  window.projectRootUrl + '/school/report/syncExam.do',
+    method: 'get',
+    params
+  })
+}

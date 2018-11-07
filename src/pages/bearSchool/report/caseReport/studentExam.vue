@@ -27,15 +27,16 @@
           </template>
         </el-table-column>
         <!--<el-table-column label="鞋码">-->
-          <!--<template slot-scope="scope">-->
-            <!--{{isNull(scope.row.custShoeSize)}}-->
-          <!--</template>-->
+        <!--<template slot-scope="scope">-->
+        <!--{{isNull(scope.row.custShoeSize)}}-->
+        <!--</template>-->
         <!--</el-table-column>-->
         <el-table-column label="操作">
           <template slot-scope="scope">
             <el-button @click="handleClick(scope.row)" v-if="scope.row.status==1" type="text" size="small">添加
             </el-button>
-            <el-button v-if="scope.row.status==2" type="text" size="small">--</el-button>
+            <el-button v-if="scope.row.status==3" type="text" size="small" @click="syncExamFn(scope.row.custCode)">同步
+            </el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -53,9 +54,9 @@
                     style="width:400px; margin-left:20px;"></el-input>
         </div>
         <!--<div style="margin-left:20px; margin-bottom:20px;">-->
-          <!--鞋码-->
-          <!--<el-input v-model="modifyHWS.custShoeSize" placeholder="请输入鞋码"-->
-                    <!--style="width:400px; margin-left:20px;"></el-input>-->
+        <!--鞋码-->
+        <!--<el-input v-model="modifyHWS.custShoeSize" placeholder="请输入鞋码"-->
+        <!--style="width:400px; margin-left:20px;"></el-input>-->
         <!--</div>-->
         <span slot="footer" style="width:164px; margin-right:40%; display: inline-block; ">
                 <el-button @click="closeFn">取 消</el-button>
@@ -79,7 +80,10 @@
         dialogVisible: false,
       }
     },
-    props: ["tableData"],
+    props: {
+      tableData: Array,
+      projectCode: [String, Number]
+    },//["tableData"],
     mounted() {
     },
     created() {
@@ -100,6 +104,21 @@
           this.dialogVisible = false
         }).catch(() => {
           this.load_data = false
+        })
+      },
+      syncExamFn(custCode) {
+        let self = this
+        let params = {
+          projectCode: self.projectCode,
+          custCode
+        }
+        self.$fetch.dataApi.syncExam(params).then(({data, msg, total}) => {
+          self.$message({
+            message: '操作成功',
+            type: 'success'
+          });
+        }).catch(() => {
+
         })
       }
     },
