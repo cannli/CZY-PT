@@ -35,7 +35,7 @@
           <template slot-scope="scope">
             <el-button @click="handleClick(scope.row)" v-if="scope.row.status==1" type="text" size="small">添加
             </el-button>
-            <el-button v-if="scope.row.status==3" type="text" size="small" @click="syncExamFn(scope.row.custCode)">同步
+            <el-button v-if="scope.row.status==3" type="text" size="small" @click="syncExamFn(scope.row.custCode)">同dd步
             </el-button>
           </template>
         </el-table-column>
@@ -107,6 +107,7 @@
         })
       },
       syncExamFn(custCode) {
+        alert(custCode)
         let self = this
         let params = {
           projectCode: self.projectCode,

@@ -108,6 +108,7 @@
         } else {
           this.status = 1
         }
+        this.examProjectCurrentPage = 1
         this._getExamStudent()
       },
       _getExamStudent(examProjectCurrentPage = 1) {
