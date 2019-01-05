@@ -410,7 +410,9 @@
         let felmanHeight = [] // 女平均
         let legendData = []
 
-        let sgPJ = undefined
+       // let sgPJ = undefined
+        let peopleAll = 0   // 总人数
+        let sgAll = 0      // 总身高
 
         for (let x in dataAll) {
           if (flag === 'nj') {
@@ -427,6 +429,8 @@
           if (dataAll[x].felmanHeight) {
             felmanHeight.push(dataAll[x].felmanHeight.toFixed(2))
           }
+          peopleAll += dataAll[x].manCount + dataAll[x].femaleCount
+          sgAll += ((dataAll[x].manCount || 0) * (dataAll[x].manHeight || 0)) + ((dataAll[x].femaleCount || 0) * (dataAll[x].femaleHeight || 0))
         }
 
         if (manHeight && manHeight.length > 0) {
@@ -447,16 +451,17 @@
           })
           legendData.push('总体平均身高')
         }
-        sgPJ = height.reduce(function (pre, cur, index, height) {
-          return Number(pre) + Number(cur)
-        });
-        self.sgPJ = sgPJ / height.length
+        // sgPJ = height.reduce(function (pre, cur, index, height) {
+        //   return Number(pre) + Number(cur)
+        // });
+        // self.sgPJ = sgPJ / height.length
+        self.sgPJ = sgAll / peopleAll
         self.heiDataObj.xAxisData = xAxisData
         self.heiDataObj.seriesData = seriesData
         self.heiDataObj.color = ['#0166FF', '#EB0D93', "#01B200"]
         self.heiDataObj.legendData = legendData
       },
-      dataTZ(flag, data) { // 身高
+      dataTZ(flag, data) { // 体重
         let self = this
         self.weiDataObj = []
         let dataAll = data
@@ -467,6 +472,8 @@
         let felmanweight = [] // 女平均
         let legendData = []
 
+        let peopleAll = 0   // 总人数
+        let tzAll = 0      // 总身高
         for (let x in dataAll) {
           if (flag === 'nj') {
             xAxisData.push(self.arrValToName(self.dataEnum.fgrade, dataAll[x].name))
@@ -482,6 +489,8 @@
           if (dataAll[x].felmanweight) {
             felmanweight.push(dataAll[x].felmanweight.toFixed(2))
           }
+          peopleAll += dataAll[x].manCount + dataAll[x].femaleCount
+          tzAll += ((dataAll[x].manCount || 0) * (dataAll[x].manweight || 0)) + ((dataAll[x].femaleCount || 0) * (dataAll[x].femaleweight || 0))
         }
 
         if (manweight && manweight.length > 0) {
@@ -502,11 +511,11 @@
           })
           legendData.push('总体平均体重')
         }
-        let tzPJ = weight.reduce(function (pre, cur, index, weight) {
-          return Number(pre) + Number(cur)
-        });
-        self.tzPJ = tzPJ / weight.length
-
+        // let tzPJ = weight.reduce(function (pre, cur, index, weight) {
+        //   return Number(pre) + Number(cur)
+        // });
+        // self.tzPJ = tzPJ / weight.length
+        self.tzPJ = tzAll / peopleAll
         self.weiDataObj =
           {
             xAxisData,
